@@ -15,19 +15,19 @@ jobs:
       install: skip
       script: ./gradlew clean build
       before_deploy:
-        - git config --local user.name "Travis CI"
-        - git config --local user.email "travis@example.com"
+        - git config --local user.name "Avinash023"
+        - git config --local user.email "Avinash_Kumar_Gumpar@Dell.com"
         - git tag -f $RELEASE_TAG
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
-        file: "build/libs/pal-tracker.jar"
+        file: "build/libs/pal-tracker-dell.jar"
         skip_cleanup: true
-    - stage: deploy to review
+    - stage: deploy to Sandbox
       language: bash
       script:
         - echo "Downloading $RELEASE_TAG"
-        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker/releases/download/$RELEASE_TAG/pal-tracker.jar
+        - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker/releases/download/$RELEASE_TAG/pal-tracker-dell.jar
       before_deploy:
         - echo "Deploying $RELEASE_TAG to review"
       deploy:
@@ -36,4 +36,4 @@ jobs:
         username: $CF_USERNAME
         password: $CF_PASSWORD
         organization: $CF_ORG
-        space: review
+        space: Sandbox
