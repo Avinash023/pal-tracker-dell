@@ -23,17 +23,17 @@ jobs:
         api_key: $GITHUB_OAUTH_TOKEN
         file: "build/libs/pal-tracker-dell.jar"
         skip_cleanup: true
-    - stage: deploy to Sandbox
+    - stage: deploy to development
       language: bash
       script:
         - echo "Downloading $RELEASE_TAG"
         - wget -P build/libs https://github.com/$GITHUB_USERNAME/pal-tracker-dell/releases/download/$RELEASE_TAG/pal-tracker-dell.jar
       before_deploy:
-        - echo "Deploying $RELEASE_TAG to review"
+        - echo "Deploying $RELEASE_TAG to development"
       deploy:
         provider: cloudfoundry
         api: $CF_API_URL
         username: $CF_USERNAME
         password: $CF_PASSWORD
         organization: $CF_ORG
-        space: Sandbox
+        space: development
