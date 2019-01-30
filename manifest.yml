@@ -2,6 +2,6 @@ applications:
   - name: pal-tracker-dell
     path: build/libs/pal-tracker-dell.jar
     routes:
-      - route: pal-tracker-avinash-gumparthi.ausvd2z02.pcf.dell.com
+      - route: pal-tracker-avinash-gumparthi.cfapps.io
     env:
-      WELCOME_MESSAGE: Hello from the review environment Dell Travis.
+      WELCOME_MESSAGE: Hello from the review environment.
